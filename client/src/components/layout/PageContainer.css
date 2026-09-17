@@ -1,0 +1,14 @@
+/* Extends globals .page-container; adds semantic size variant */
+.page-container {
+  width: min(100% - calc(var(--space-4) * 2), 1180px);
+  margin-inline: auto;
+  padding-block: var(--space-6);
+}
+.page-container--narrow { max-width: 440px; }
+.page-container--standard { max-width: 720px; }
+.page-container--wide { max-width: 1180px; }
+@media (min-width: 768px) {
+  .page-container {
+    width: min(100% - calc(var(--space-8) * 2), 1180px);
+  }
+}

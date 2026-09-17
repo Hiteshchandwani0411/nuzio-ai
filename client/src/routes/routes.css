@@ -1,0 +1,6 @@
+.page-transition {
+  animation: page-enter var(--duration-slow) var(--ease-emphasized) both;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

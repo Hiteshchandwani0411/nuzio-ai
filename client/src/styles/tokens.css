@@ -1,0 +1,164 @@
+/* ============================================================
+   Nuzio AI — Design Tokens
+   Source of truth: docs/DESIGN_TOKENS.md
+   Raw values live ONLY here. Components consume semantic tokens.
+   ============================================================ */
+
+:root {
+  /* 2. Color tokens */
+  --color-bg: #0d0d0d;
+  --color-bg-canvas: #0f0f0f;
+  --color-topbar: rgba(13, 13, 13, 0.92);
+
+  --color-surface: rgba(255, 255, 255, 0.07);
+  --color-surface-elevated: rgba(255, 255, 255, 0.1);
+  --color-surface-strong: rgba(255, 255, 255, 0.13);
+  --color-nav: rgba(20, 20, 20, 0.95);
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-border-focus: #7c5cff;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.48);
+  --color-text-disabled: rgba(255, 255, 255, 0.3);
+
+  --color-primary: #7c5cff;
+  --color-primary-hover: #8a6dff;
+  --color-primary-active: #6c4df5;
+
+  --color-success: #39d98a;
+  --color-warning: #f4c95d;
+  --color-danger: #ff6674;
+  --color-live: #39d98a;
+
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Reusable component roles. Keep raw values centralized here. */
+  --color-input: rgba(255, 255, 255, 0.05);
+  --color-selected: rgba(124, 92, 255, 0.14);
+  --color-selected-strong: rgba(124, 92, 255, 0.2);
+  --color-success-subtle: rgba(57, 217, 138, 0.14);
+  --color-danger-subtle: rgba(255, 102, 116, 0.12);
+  --color-warning-subtle: rgba(244, 201, 93, 0.14);
+  --color-preview: rgba(255, 255, 255, 0.04);
+
+  /* Gradient tokens */
+  --gradient-primary: linear-gradient(90deg, #7c5cff 0%, #a16eff 45%, #36d9c8 100%);
+  --gradient-success: linear-gradient(90deg, #7c5cff 0%, #39d98a 100%);
+
+  /* 3. Glow tokens */
+  --glow-primary: radial-gradient(
+    circle,
+    rgba(124, 92, 255, 0.22) 0%,
+    rgba(124, 92, 255, 0.08) 28%,
+    transparent 65%
+  );
+  --glow-success: radial-gradient(circle, rgba(57, 217, 138, 0.16) 0%, transparent 65%);
+  --glow-ambient: radial-gradient(circle, rgba(124, 92, 255, 0.1) 0%, transparent 70%);
+  --glow-focus: 0 0 0 1px var(--color-border-focus), 0 0 18px rgba(124, 92, 255, 0.2);
+
+  /* 4. Typography tokens */
+  --font-ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    monospace;
+
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: clamp(34px, 5vw, 46px);
+
+  --line-height-tight: 1.05;
+  --line-height-snug: 1.2;
+  --line-height-body: 1.5;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-meta: 0.1em;
+
+  /* 5. Spacing tokens */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* 6. Radius tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* 7. Borders */
+  --border-width-thin: 1px;
+  --border-default: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border-strong);
+  --border-focus: 1px solid var(--color-border-focus);
+
+  /* 8. Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.28);
+  --shadow-floating: 0 18px 50px rgba(0, 0, 0, 0.38);
+  --shadow-glow: 0 0 28px rgba(124, 92, 255, 0.18);
+  --shadow-docked: 0 -8px 24px rgba(0, 0, 0, 0.35);
+
+  /* 9. Control dimensions */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --control-height-lg: 48px;
+  --control-height-xl: 54px;
+
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --touch-target: 44px;
+
+  /* 10. Logo sizing */
+  --logo-size-splash: 110px;
+  --logo-size-language: 76px;
+  --logo-size-login: 96px;
+  --logo-size-onboarding: 38px;
+  --logo-size-app-header: 44px;
+  --logo-size-canvas: 28px;
+
+  /* 12. Header / canvas */
+  --topbar-height: 44px;
+  --app-header-height: 64px;
+  --bottom-nav-height: 72px;
+
+  /* 13. Layering */
+  --z-base: 0;
+  --z-content: 10;
+  --z-header: 100;
+  --z-player: 200;
+  --z-nav: 300;
+  --z-overlay: 1000;
+  --z-modal: 1100;
+  --z-toast: 1200;
+
+  /* 14. Motion tokens */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast: 150ms;
+  --duration-normal: 220ms;
+  --duration-slow: 320ms;
+
+  /* Responsive breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}

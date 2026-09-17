@@ -1,0 +1,109 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.38rem, 1vw, 0.6rem);
+}
+
+.input-label {
+  font-size: clamp(0.64rem, 1vw, 0.76rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.input-required {
+  color: var(--color-primary);
+}
+
+.input-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(46px, 5vw, 56px);
+  background: var(--color-input);
+  border: var(--border-default);
+  border-radius: clamp(10px, 1.5vw, 14px);
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.input-shell:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--glow-focus);
+  background: var(--color-surface);
+  transform: translateY(-1px);
+}
+
+.input-shell--error {
+  border-color: var(--color-danger);
+}
+.input-shell--error:focus-within {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 1px var(--color-danger), 0 0 18px rgba(255, 102, 116, 0.18);
+}
+
+.input-shell--icon {
+  padding-left: clamp(0.8rem, 2vw, 1rem);
+}
+
+.input-icon {
+  display: inline-flex;
+  color: var(--color-text-muted);
+  margin-right: clamp(0.45rem, 1vw, 0.8rem);
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  min-height: clamp(46px, 5vw, 56px);
+  padding-inline: clamp(0.8rem, 2vw, 1rem);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input--textarea {
+  padding-block: clamp(0.7rem, 1.6vw, 0.9rem);
+  resize: vertical;
+  line-height: var(--line-height-body);
+}
+
+.input-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(36px, 4vw, 44px);
+  height: clamp(36px, 4vw, 44px);
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
+}
+.input-action:hover {
+  color: var(--color-text-primary);
+  transform: scale(1.06);
+}
+
+.input-error {
+  font-size: clamp(0.68rem, 1vw, 0.78rem);
+  color: var(--color-danger);
+}
+.input-hint {
+  font-size: clamp(0.68rem, 1vw, 0.78rem);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,60 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.app-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Reserve space above mobile bottom nav */
+@media (max-width: 1023px) {
+  .app-shell .app-main {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + var(--space-4));
+  }
+}
+
+/* Persistent mini player: fixed above the bottom nav on small screens */
+.app-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-player);
+}
+
+@media (max-width: 1023px) {
+  .app-shell--has-player .app-main {
+    padding-bottom: calc(
+      var(--bottom-nav-height) + clamp(6.5rem, 18vw, 8.5rem) + env(safe-area-inset-bottom, 0px)
+    );
+  }
+}
+
+/* Docked player on desktop */
+@media (min-width: 1024px) {
+  .app-shell--has-player {
+    padding-bottom: 0;
+  }
+
+  .app-shell--has-player .app-main {
+    padding-bottom: 0;
+  }
+
+  .app-player {
+    position: sticky;
+    bottom: 0;
+    z-index: var(--z-player);
+    width: min(100% - 64px, 720px);
+    margin: 0 auto;
+    padding: var(--space-4) 0;
+  }
+
+  .app-player .news-player--docked {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+}

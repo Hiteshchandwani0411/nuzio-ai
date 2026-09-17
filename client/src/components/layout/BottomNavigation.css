@@ -1,0 +1,54 @@
+/* Mobile-first persistent navigation — hidden on desktop per docs §9. */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--bottom-nav-height);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--color-nav);
+  border-top: var(--border-default);
+}
+
+@media (min-width: 1024px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  justify-content: center;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.bottom-nav-item:hover {
+  color: var(--color-text-secondary);
+}
+
+.bottom-nav-item--active {
+  color: var(--color-primary);
+  background: var(--color-selected);
+  border-radius: var(--radius-pill);
+}
+
+.bottom-nav-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+}

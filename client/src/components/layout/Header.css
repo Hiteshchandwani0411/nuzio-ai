@@ -1,0 +1,31 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--color-topbar);
+  border-bottom: var(--border-default);
+  height: var(--app-header-height);
+  display: flex;
+  align-items: center;
+}
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
+  gap: var(--space-4);
+}
+
+.app-header-center {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}

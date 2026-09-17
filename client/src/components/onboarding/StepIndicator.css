@@ -1,0 +1,20 @@
+.step-indicator {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.step-bar {
+  flex: 1 1 0;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+.step-bar--filled {
+  background: var(--gradient-success);
+  box-shadow: var(--shadow-glow);
+}

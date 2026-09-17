@@ -1,0 +1,77 @@
+/* Compact icon-only actions. aria-label is mandatory. */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.icon-btn:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+}
+
+.icon-btn:active:not(:disabled) {
+  background: var(--color-surface-elevated);
+}
+
+.icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon-btn--ghost {
+  background: transparent;
+}
+
+.icon-btn--surface {
+  background: var(--color-surface);
+  border: var(--border-default);
+}
+
+.icon-btn--primary {
+  color: #ffffff;
+  background: var(--gradient-primary);
+}
+.icon-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.icon-btn--sm {
+  width: var(--control-height-sm);
+  min-width: var(--control-height-sm);
+  height: var(--control-height-sm);
+}
+.icon-btn--md {
+  width: var(--control-height-md);
+  min-width: var(--control-height-md);
+  height: var(--control-height-md);
+}
+.icon-btn--lg {
+  width: var(--control-height-lg);
+  min-width: var(--control-height-lg);
+  height: var(--control-height-lg);
+}
+
+.icon-btn svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+.icon-btn--sm svg {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.icon-btn--lg svg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}

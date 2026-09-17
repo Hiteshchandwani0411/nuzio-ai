@@ -1,0 +1,65 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.3rem, 0.8vw, 0.55rem);
+  line-height: 0;
+  position: relative;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark {
+  width: var(--logo-w, var(--logo-size-app-header));
+  height: var(--logo-w, var(--logo-size-app-header));
+  display: block;
+  filter: drop-shadow(0 0 18px rgba(124, 92, 255, 0.26));
+  transform: translateZ(0);
+}
+
+.logo--wordmark {
+  gap: clamp(0.25rem, 0.7vw, 0.45rem);
+}
+
+.logo-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(0.2rem, 0.7vw, 0.35rem);
+  font-family: 'Inter', var(--font-ui), sans-serif;
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.logo-wordmark-main {
+  color: #f2f2f5;
+  font-weight: 700;
+}
+
+.logo-wordmark-accent {
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.logo--glow {
+  position: relative;
+}
+.logo--glow::after {
+  content: '';
+  position: absolute;
+  inset: -24%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.34), rgba(124, 92, 255, 0.12) 22%, transparent 64%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(6px);
+}
+
+.logo:hover .logo-mark {
+  transform: scale(1.04) translateZ(0);
+}

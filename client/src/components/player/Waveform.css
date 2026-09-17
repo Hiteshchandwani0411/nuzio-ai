@@ -1,0 +1,25 @@
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 28px;
+  width: 100%;
+}
+
+.waveform-bar {
+  flex: 1 1 0;
+  min-width: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-strong);
+  transition: background-color 0.2s ease;
+}
+
+.waveform-bar.is-filled {
+  background: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waveform-bar {
+    transition: none;
+  }
+}

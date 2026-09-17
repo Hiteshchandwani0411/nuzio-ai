@@ -1,0 +1,162 @@
+/* Primary: gradient, white text. Secondary: surface. Ghost: quiet. Danger: destructive. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.35rem, 1vw, 0.6rem);
+  min-height: clamp(44px, 5vw, 56px);
+  padding-inline: clamp(0.95rem, 2vw, 1.35rem);
+  font-family: 'Inter', var(--font-ui), sans-serif;
+  font-weight: 650;
+  letter-spacing: var(--tracking-normal);
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
+  border-radius: clamp(12px, 1.7vw, 16px);
+  border: var(--border-width-thin) solid transparent;
+  white-space: nowrap;
+  user-select: none;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.26) 48%, transparent 100%);
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+  z-index: 0;
+}
+
+.btn:hover:not(:disabled)::before {
+  transform: translateX(130%);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.995);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn--sm {
+  min-height: clamp(38px, 4.5vw, 44px);
+  padding-inline: clamp(0.7rem, 1.8vw, 1rem);
+  font-size: clamp(0.76rem, 1.1vw, 0.86rem);
+}
+.btn--md {
+  min-height: clamp(42px, 4.8vw, 48px);
+  padding-inline: clamp(0.9rem, 2vw, 1.2rem);
+  font-size: clamp(0.8rem, 1.25vw, 0.94rem);
+}
+.btn--lg {
+  min-height: clamp(46px, 5vw, 54px);
+  padding-inline: clamp(1rem, 2.2vw, 1.4rem);
+  font-size: clamp(0.86rem, 1.3vw, 1rem);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Primary action */
+.btn--primary {
+  color: #ffffff;
+  background: var(--gradient-primary);
+  background-size: 200% 100%;
+  box-shadow: 0 10px 26px rgba(124, 92, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  background-position: right center;
+  box-shadow: 0 12px 30px rgba(124, 92, 255, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+.btn--primary:active:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+/* Secondary action */
+.btn--secondary {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.btn--secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.btn--secondary:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Ghost action */
+.btn--ghost {
+  color: var(--color-text-secondary);
+  background: transparent;
+}
+.btn--ghost:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+.btn--ghost:active:not(:disabled) {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Danger action */
+.btn--danger {
+  color: #ffffff;
+  background: var(--color-danger);
+}
+.btn--danger:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.btn--danger:active:not(:disabled) {
+  filter: brightness(0.94);
+}
+
+.btn--loading {
+  cursor: progress;
+}
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 50%, transparent 100%);
+  transform: translateX(-120%);
+  animation: wipeSlide 0.9s ease-in-out infinite alternate;
+}
+
+.btn--loading .btn-label {
+  opacity: 0.9;
+}
+
+@keyframes wipeSlide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}

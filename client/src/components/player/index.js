@@ -1,0 +1,6 @@
+export { default as NewsPlayer } from './NewsPlayer'
+export { default as PlayerControls } from './PlayerControls'
+export { default as ProgressBar } from './ProgressBar'
+export { default as SpeedControl } from './SpeedControl'
+export { default as StoryInfo } from './StoryInfo'
+export { default as Waveform } from './Waveform'

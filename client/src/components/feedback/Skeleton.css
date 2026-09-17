@@ -1,0 +1,28 @@
+/* Skeletons share the radius/spacing of the loaded UI. */
+.skeleton {
+  display: inline-block;
+  background: linear-gradient(
+    100deg,
+    var(--color-surface) 40%,
+    var(--color-surface-elevated) 50%,
+    var(--color-surface) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton--card {
+  border-radius: var(--radius-lg);
+}
+.skeleton--line {
+  border-radius: var(--radius-sm);
+}
+.skeleton--circle {
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

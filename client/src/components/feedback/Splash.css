@@ -1,0 +1,28 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  background: var(--color-bg);
+}
+
+.splash-glow {
+  position: absolute;
+  width: min(70vw, 420px);
+  height: min(70vw, 420px);
+  border-radius: 50%;
+  background: var(--glow-primary);
+  pointer-events: none;
+}
+
+.splash-label {
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
