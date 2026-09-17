@@ -6,7 +6,7 @@
 // degrade gracefully.
 
 import config from '../../config/index.js'
-import { fetchFromNewsApi } from './providers/newsapi.provider.js'
+import { fetchFromNewsApi } from './providers/newsdataio.provider.js'
 import { fetchSampleArticles } from './news.sampledata.js'
 import { ProviderError } from './providers/errors.js'
 

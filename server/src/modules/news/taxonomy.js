@@ -75,14 +75,41 @@ const LABEL_ALIASES = {
   environment: 'Climate',
   finance: 'Finance',
   markets: 'Finance',
+  // NewsData.io category vocabulary.
+  politics: 'Politics',
+  crime: 'Politics',
+  domestic: 'General',
+  education: 'General',
+  food: 'Culture',
+  lifestyle: 'Culture',
+  tourism: 'Culture',
+  world: 'General',
+  top: 'General',
+  other: 'General',
 }
 
 export function toCategory(label = '') {
+  // Providers may report a category as an array; pick the first entry that maps
+  // to something more specific than General.
+  if (Array.isArray(label)) {
+    for (const entry of label) {
+      const mapped = toCategory(entry)
+      if (mapped !== DEFAULT_CATEGORY) return mapped
+    }
+    return DEFAULT_CATEGORY
+  }
   const value = String(label).trim().toLowerCase()
   if (CATEGORIES.some((c) => c.toLowerCase() === value)) {
     return CATEGORIES.find((c) => c.toLowerCase() === value)
   }
   return LABEL_ALIASES[value] || DEFAULT_CATEGORY
+}
+
+// Match a keyword as a whole word/phrase so short tokens ('ai', 'app', 'f1')
+// don't false-positive inside longer words ('Israel', 'available', 'apple').
+function keywordInText(text, keyword) {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(text)
 }
 
 // Classify free text into a canonical category using keyword density.
@@ -93,7 +120,7 @@ export function classifyCategory(text = '') {
   for (const [category, keywords] of Object.entries(TAXONOMY)) {
     let hits = 0
     for (const keyword of keywords) {
-      if (lower.includes(keyword)) hits += 1
+      if (keywordInText(lower, keyword)) hits += 1
     }
     if (hits > bestCount) {
       best = category
@@ -109,7 +136,7 @@ export function extractTopics(text = '') {
   const found = new Set()
   for (const keywords of Object.values(TAXONOMY)) {
     for (const keyword of keywords) {
-      if (lower.includes(keyword)) {
+      if (keywordInText(lower, keyword)) {
         found.add(keyword.split(' ').map((w) => w[0].toUpperCase() + w.slice(1)).join(' '))
       }
     }

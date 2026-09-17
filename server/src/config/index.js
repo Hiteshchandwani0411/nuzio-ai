@@ -54,6 +54,8 @@ export const config = {
     // Live top-headlines country (NewsAPI 2-letter ISO code). Defaults to India
     // to match the product's "Indian professionals" positioning.
     country: process.env.NEWS_API_COUNTRY || 'in',
+    // ISO 639-1 language filter for the feed. 'en' keeps the product English-only.
+    language: process.env.NEWS_API_LANGUAGE || 'en',
   },
 
   audio: {
