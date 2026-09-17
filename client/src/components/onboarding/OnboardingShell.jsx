@@ -6,7 +6,7 @@ function OnboardingShell({ step, total, stepLabel, title, description, children,
   return (
     <div className="onboarding-shell">
       <header className="onboarding-header">
-        <Logo size="onboarding" />
+        <Logo size="app-header" wordmark />
         {onSkip && (
           <button type="button" className="onboarding-skip" onClick={onSkip}>
             Skip →

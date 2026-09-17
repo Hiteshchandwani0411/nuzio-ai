@@ -93,17 +93,27 @@ function LoginForm() {
         required
       />
 
-      <Button type="submit" size="xl" fullWidth loading={loading}>
-        Sign in <ArrowRight size={16} aria-hidden="true" />
+      <Button type="submit" size="xl" fullWidth loading={loading} className="login-submit-btn">
+        <span>Sign in</span>
+        <ArrowRight size={16} aria-hidden="true" />
       </Button>
 
       <div className="login-divider" role="separator" aria-hidden="true">
         <span>or</span>
       </div>
 
-      <Button type="button" variant="secondary" size="xl" fullWidth onClick={handleGoogle}>
-        <GoogleIcon />
-        Continue with Google
+      <Button
+        type="button"
+        variant="secondary"
+        size="xl"
+        fullWidth
+        onClick={handleGoogle}
+        className="login-google-btn"
+      >
+        <span className="login-google-icon">
+          <GoogleIcon size={20} />
+        </span>
+        <span>Continue with Google</span>
       </Button>
     </form>
   )

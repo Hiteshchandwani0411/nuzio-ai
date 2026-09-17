@@ -1,14 +1,15 @@
 .chip {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(0.35rem, 1vw, 0.5rem);
-  min-height: clamp(34px, 4vw, 42px);
+  min-height: clamp(42px, 4vw, 52px);
   padding-inline: clamp(0.7rem, 1.5vw, 1rem);
   font-size: clamp(0.76rem, 1.2vw, 0.9rem);
   font-weight: 600;
   color: var(--color-text-secondary);
-  background: var(--color-surface);
-  border: var(--border-default);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-pill);
   white-space: nowrap;
   transition:
@@ -20,15 +21,18 @@
     filter var(--duration-fast) var(--ease-standard);
   cursor: pointer;
 }
+
 .chip:hover:not(:disabled) {
   color: var(--color-text-primary);
-  background: var(--color-surface-elevated);
-  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
 }
+
 .chip:active:not(:disabled) {
   transform: scale(0.97);
 }
+
 .chip:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -36,12 +40,13 @@
 
 .chip--selected {
   color: var(--color-text-primary);
-  background: var(--color-selected);
-  border-color: var(--color-primary);
+  background: rgba(124, 92, 255, 0.15);
+  border-color: rgba(124, 92, 255, 0.7);
   box-shadow: 0 0 12px rgba(124, 92, 255, 0.2);
 }
+
 .chip--selected:hover:not(:disabled) {
-  background: var(--color-selected-strong);
+  background: rgba(124, 92, 255, 0.2);
 }
 
 .chip-check {
@@ -53,6 +58,7 @@
   display: inline-flex;
   color: inherit;
 }
+
 .chip-icon svg {
   width: 16px;
   height: 16px;

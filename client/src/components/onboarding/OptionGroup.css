@@ -1,13 +1,14 @@
 .option-group {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3);
+  gap: 0.7rem 0.8rem;
 }
 
 .option-group .chip {
   width: 100%;
-  min-height: var(--touch-target);
+  min-height: 50px;
   justify-content: center;
+  padding-inline: 0.9rem;
 }
 
 @media (max-width: 640px) {
