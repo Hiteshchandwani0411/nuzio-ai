@@ -16,14 +16,60 @@ if (existsSync(envPath)) {
   dotenv.config()
 }
 
+// Only pure-development environments get insecure localhost/placeholder
+// fallbacks. Every other NODE_ENV value (production, staging, preview,
+// test, …) must supply the required variables explicitly — the server
+// refuses to start with a missing or placeholder secret/database URL.
+const env = process.env.NODE_ENV || 'development'
+const isProduction = env !== 'development'
+
+function requiredSecret(name) {
+  const value = process.env[name]
+  if (isProduction) {
+    if (!value || value.trim() === '') {
+      throw new Error(`Missing required environment variable: ${name}`)
+    }
+    if (value === 'change-me') {
+      throw new Error(
+        `Insecure placeholder 'change-me' for ${name} — set a real secret in production`,
+      )
+    }
+  }
+  return value
+}
+
+function requiredDatabaseUri() {
+  const value = process.env.MONGODB_URI || process.env.MONGODB_URL
+  if (isProduction && !value) {
+    throw new Error(
+      'Missing required environment variable: MONGODB_URI (or MONGODB_URL)',
+    )
+  }
+  return value
+}
+
+function requiredOrigin() {
+  const value = process.env.CLIENT_ORIGIN
+  if (isProduction && !value) {
+    throw new Error('Missing required environment variable: CLIENT_ORIGIN')
+  }
+  return value
+}
+
 export const config = {
-  env: process.env.NODE_ENV || 'development',
+  env,
   port: parseInt(process.env.PORT, 10) || 5000,
   mongoUri:
-    process.env.MONGODB_URI || process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/nuzio',
-  jwtSecret: process.env.JWT_SECRET || 'change-me',
+    isProduction
+      ? requiredDatabaseUri()
+      : process.env.MONGODB_URI || process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/nuzio',
+  jwtSecret: isProduction
+    ? requiredSecret('JWT_SECRET')
+    : process.env.JWT_SECRET || 'change-me',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
-  clientOrigin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  clientOrigin: isProduction
+    ? requiredOrigin()
+    : process.env.CLIENT_ORIGIN || 'http://localhost:5173',
 
   // Live LLM narration (Gemini). Empty apiKey degrades to the deterministic
   // template narration — the brief pipeline must never dead-end on a missing key.
